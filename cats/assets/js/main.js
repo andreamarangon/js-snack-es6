@@ -21,7 +21,7 @@ $(document).ready(function () {
       nome: 'Morgana',
       eta: 7,
       colore: 'grigio',
-      sesso: 'Femmina'
+      sesso: 'femmina'
     },
     {
       nome: 'Anselmo',
@@ -44,8 +44,53 @@ $(document).ready(function () {
   const femmine = cats.filter((element) => element.sesso == 'femmina');
   console.log(maschi);
   console.log(femmine);
-  // e aggiungere a fianco di ogni gattino un fiocco colorato di rosa, se femmina, o di blu, se maschio.
-  // Il colore del fiocco deve essere più tenue se il gatto è più giovane, più scuro se il gatto è più vecchio.
+  //aggiungere a fianco di ogni gattino un fiocco colorato di rosa, se femmina, o di blu, se maschio.
+  //Il colore del fiocco deve essere più tenue se il gatto è più giovane,
+  //più scuro se il gatto è più vecchio.
+
+  maschi.forEach((item) => {
+    $('#cats').append(`<li class='azzurro'>${item.nome} è di colore ${item.colore} <i class="fas fa-ribbon"></i></li>`)
+    // if (item.eta < 10) {
+    //   $('li.azzurro i').addClass('young')
+    // } else {
+    //   $('li.azzurro i').addClass('old')
+    // }
+  });
+
+
+  femmine.forEach((item) => {
+    $('#cats').append(`<li class='rosa'>${item.nome} è di colore ${item.colore} <i class="fas fa-ribbon"></i></li>`)
+    // if (item.eta < 10) {
+    //   $('li.rosa i').addClass('young')
+    // } else {
+    //   $('li.rosa i').addClass('old')
+    // }
+  });
+
+  //Il colore del fiocco deve essere più tenue se il gatto è più giovane,
+  //più scuro se il gatto è più vecchio.
+  cats.forEach((item) => {
+    if (item.eta < 10) {
+      $('li i').addClass('young');
+    } else if (item.eta >= 10){
+      $('li i').addClass('old');
+    }
+    console.log(item.eta);
+
+  });
+  // cats.forEach((item) => {
+  //   let colore;
+  //
+  //   if(item.sesso == 'maschio') {
+  //       colore = 'azzurro';
+  //   }
+  //
+  //   else if(item.sesso == 'femmina') {
+  //       colore = 'rosa';
+  //   }
+  //
+  //   $('#cats').append(`<li class="${colore}">${item.nome} è di colore ${item.colore}<i class="fas fa-ribbon"></i></li>`)
+  // });
 
 
 
